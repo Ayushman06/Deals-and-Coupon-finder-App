@@ -1,0 +1,117 @@
+<app-navbar></app-navbar>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top sticky-top nav-element" >
+  <div class="container-fluid">
+    <a class="navbar-brand" style="color: #C6AD8F;" href="#" >Coupon Express</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav  ms-auto mb-2 ">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="#" >Home</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">sponsors</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="/coupon" >Coupons</a>
+        </li>
+        <!--<li class="nav-item">
+          <a class="nav-link" routerLink="/admin-dashboard">Admin</a>
+        </li>-->
+
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">ADMIN Sign In</a>
+        </li>
+
+        <button class="btn btn-block google-sign-in" (click)="signInHandler()">
+          <img [src]="'assets/images/google.svg'" alt="google"/>
+          <span></span>
+        </button>
+
+      </ul>
+      <!--<button class="btn btn-warning navbar-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign In</button>-->
+      <!-- <button class="btn btn-warning">Register</button> -->
+    </div>
+  </div>
+</nav>
+
+
+
+
+<footer class="container" class="fixed-bottom  sticky-bottom  p-1 footer-element ">
+  <div >
+    <div class="row">
+        <div class="col-md-3"><span class="copyright text-clack">Copyright&nbsp;© CouponExpress 2021</span></div>
+        <div class="col-md-2">
+            <ul class="list-inline social-buttons">
+                <li class="list-inline-item"><a href="https://github.com/Ayushman06" target="_blank"><i class="fa fa-github"></i></a></li>
+                <li class="list-inline-item"><a href="https://www.facebook.com/ayushman.manna.7" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a href="https://www.linkedin.com/in/ayushman-manna-2a2b831b4?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B5Yeue81OTUqnChxZAFyL1A%3D%3D" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+        </div>
+        <div class="col-md-5">
+            <ul class="list-inline quicklinks">
+
+                <li class="list-inline-item"><span style="color: black; padding-left: 400px;" >Feel free to Contribute</span></li>
+               
+            </ul>
+        </div>
+        <div class="col-md-2">
+          <ul class="list-inline ">
+            <!-- <span style="color: #fed136;">Contribute Now<i class="fa fa-inr" style="color: #fed136; margin-right: 10px;">100</i></span> -->
+              <!-- <li class="list-inline-item"><p style="color: #fed136;">Contribute Now</p></li>
+              <li class="list-inline-item"><i class="fa fa-inr" aria-hidden="true"  style="color: #fed136;">100</i></li> -->
+              <li>
+                    <google-pay-button
+                    environment="TEST"
+                    buttonType="pay"
+                    buttonSizeMode="fill"
+                    buttonColor="white"
+                    [paymentRequest]="{
+                        apiVersion: 2,
+                        apiVersionMinor: 0,
+                        allowedPaymentMethods: [
+                          {
+                            type: 'CARD',
+                            parameters: {
+                              allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                              allowedCardNetworks: ['AMEX', 'VISA', 'MASTERCARD']
+                            },
+                            tokenizationSpecification: {
+                              type: 'PAYMENT_GATEWAY',
+                              parameters: {
+                                gateway: 'example',
+                                gatewayMerchantId: 'exampleGatewayMerchantId'
+                              }
+                            }
+                          }
+                        ],
+                        merchantInfo: {
+                            merchantId: '6818-8902-7761',
+                            merchantName: 'Gudupali Manish'
+                        },
+                        transactionInfo: {
+                          totalPriceStatus: 'FINAL',
+                          totalPriceLabel: 'Total',
+                          totalPrice: '10.00',
+                          currencyCode: 'INR',
+                          countryCode: 'IN'
+                        }
+                      }"
+                    (loadpaymentdata)="onLoadPaymentData($event)"
+                    >
+                     </google-pay-button>   
+              </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<router-outlet></router-outlet>
+
+
+

@@ -1,0 +1,105 @@
+<h1 style="text-align: center; color: #425664;"><br>Coupons</h1><br>
+
+
+<div class="container-fluid">
+  <div class="custom-card">
+
+    <div class="text-center mb-4">
+      <img [src]="userDetails?.photoUrl" alt="user-avatar" class="user-avatar"/>
+    </div>
+
+    <p class="mb-2">
+      <span class="font-weight-bold">Name: </span>{{userDetails?.name}}
+    </p>
+
+    <p class="mb-2">
+      <span class="font-weight-bold">Email: </span>{{userDetails?.email}}
+    </p>
+
+    <button class="btn btn-block btn-danger mt-4" (click)="signOut()">Sign out</button>
+
+  </div>
+</div>
+
+
+<div class="row g-3 align-items-center" style="padding-left: 70px ;">
+  <div class="col-auto">
+    <label class="col-form-label text-white text-bolder">Search : </label>
+  </div>
+  <div class="col-auto search-product">
+    <input type="text"  class="form-control" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="search">
+  </div>
+  <div class="col-auto">
+    <span class="form-text text-white">
+      search by Id, Provider, Code, Category, Description, & ExpiryDate
+    </span>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">  
+
+    
+
+    <div class="col-sm" *ngFor="let product of coupons | filter:searchText">
+      <div  class="p-3" style="margin-left: 20px;">
+        <div class="col-12 shadow mb-3 rounded coupon-card"  style="max-width: 540px;" >
+          <!-- <div class="row g-0" > -->
+          <div class="col-md-3 coupon-card-element rounded-start">
+            <div class="coupon-element1 text-center ">
+              <!--<p>15% Off</p>-->
+              <p style="color: white;">{{product.description}}</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-2 coupon-element2">
+              <p class="deal-title">{{product.provider}}</p>
+              <p class="deal-title">{{product.category}}</p>
+            </div>
+          </div>
+          <div class="col-md-3 text-center coupon-card-element">
+            <div class="mt-4">
+              <button type="button" class="btn" style="background-color: #C6AD8F;" (click)=updatepcode(product.code,product.expiryDate) data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                Show Code
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
+
+
+
+
+<div >
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Copy Paste, Voila!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <main class="modal__content">
+            <p>Expiry Date: {{edate}}</p>
+            <div class="code-wrap">
+              <div class="code">
+                <p data-copy="SSTKD23MG6">{{pcode}}</p>
+              </div>
+              <!-- <btn class="btn btn-primary copy-text">Copy</btn> -->
+            </div>
+          </main>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
